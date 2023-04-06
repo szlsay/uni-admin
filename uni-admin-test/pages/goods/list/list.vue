@@ -42,7 +42,7 @@
 						<uni-td align="center">{{item.goods_desc}}</uni-td>
 						<uni-td align="center">
 							<image v-if="item.goods_thumb && item.goods_thumb.fileType == 'image'"
-								style="width: 60px; height: 60px; background-color: #eeeeee;" :src="item.goods_thumb.path"></image>
+								style="width: 60px; height: 60px;" :src="item.goods_thumb.path"></image>
 						</uni-td>
 						<uni-td align="center">{{item.remain_count}}</uni-td>
 						<uni-td align="center">
@@ -70,7 +70,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '../../js_sdk/validator/st-goods.js';
+	} from '@/js_sdk/validator/st-goods.js';
 
 	const db = uniCloud.database()
 	// 表查询配置

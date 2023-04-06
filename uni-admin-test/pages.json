@@ -136,17 +136,32 @@
 				"navigationBarTitleText": "设置密码"
 			}
 		}, {
-			"path": "pages/goods/add",
+			"path": "pages/goods/list/add",
 			"style": {
 				"navigationBarTitleText": "新增"
 			}
 		}, {
-			"path": "pages/goods/edit",
+			"path": "pages/goods/list/edit",
 			"style": {
 				"navigationBarTitleText": "编辑"
 			}
 		}, {
-			"path": "pages/goods/list",
+			"path": "pages/goods/list/list",
+			"style": {
+				"navigationBarTitleText": "列表"
+			}
+		}, {
+			"path": "pages/goods/label/add",
+			"style": {
+				"navigationBarTitleText": "新增"
+			}
+		}, {
+			"path": "pages/goods/label/edit",
+			"style": {
+				"navigationBarTitleText": "编辑"
+			}
+		}, {
+			"path": "pages/goods/label/list",
 			"style": {
 				"navigationBarTitleText": "列表"
 			}

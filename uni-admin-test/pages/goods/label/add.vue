@@ -1,20 +1,14 @@
 <template>
   <view class="uni-container">
     <uni-forms ref="form" :model="formData" validateTrigger="bind">
-      <uni-forms-item name="name" label="名称">
-        <uni-easyinput placeholder="商品名称" v-model="formData.name" trim="both"></uni-easyinput>
+      <uni-forms-item name="icon" label="标签图片">
+        <uni-file-picker file-mediatype="image" file-extname="jpg,png" return-type="object" v-model="formData.icon"></uni-file-picker>
       </uni-forms-item>
-      <uni-forms-item name="goods_desc" label="详细描述">
-        <uni-easyinput placeholder="商品详细描述" v-model="formData.goods_desc" trim="both"></uni-easyinput>
+      <uni-forms-item name="sort" label="排序">
+        <uni-easyinput placeholder="类别显示顺序" type="number" v-model="formData.sort"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="goods_thumb" label="商品图片">
-        <uni-file-picker file-mediatype="image" file-extname="jpg,png" return-type="object" v-model="formData.goods_thumb"></uni-file-picker>
-      </uni-forms-item>
-      <uni-forms-item name="remain_count" label="库存数量">
-        <uni-easyinput placeholder="库存数量" type="number" v-model="formData.remain_count"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="last_modify_date" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.last_modify_date"></uni-datetime-picker>
+      <uni-forms-item name="name" label="标签名称" required>
+        <uni-easyinput placeholder="标签名称" v-model="formData.name" trim="both"></uni-easyinput>
       </uni-forms-item>
       <view class="uni-button-group">
         <button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
@@ -27,11 +21,11 @@
 </template>
 
 <script>
-  import { validator } from '../../js_sdk/validator/st-goods.js';
+  import { validator } from '@/js_sdk/validator/st-goods-label.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'st-goods';
+  const dbCollectionName = 'st-goods-label';
 
   function getValidator(fields) {
     let result = {}
@@ -48,11 +42,9 @@
   export default {
     data() {
       let formData = {
-        "name": "",
-        "goods_desc": "",
-        "goods_thumb": null,
-        "remain_count": null,
-        "last_modify_date": null
+        "icon": null,
+        "sort": null,
+        "name": ""
       }
       return {
         formData,
