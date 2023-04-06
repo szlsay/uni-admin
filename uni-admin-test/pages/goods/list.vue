@@ -41,12 +41,8 @@
 						<uni-td align="center">{{item.name}}</uni-td>
 						<uni-td align="center">{{item.goods_desc}}</uni-td>
 						<uni-td align="center">
-							{{item.goods_thumb}}
-							<uni-file-picker v-if="item.goods_thumb && item.goods_thumb.fileType == 'image'" :value="item.goods_thumb"
-								:file-mediatype="item.goods_thumb && item.goods_thumb.fileType" return-type="object"
-								:imageStyles="imageStyles" readonly></uni-file-picker>
-							<uni-link v-else :href="item.goods_thumb && item.goods_thumb.url"
-								:text="item.goods_thumb && item.goods_thumb.url"></uni-link>
+							<image v-if="item.goods_thumb && item.goods_thumb.fileType == 'image'"
+								style="width: 60px; height: 60px; background-color: #eeeeee;" :src="item.goods_thumb.path"></image>
 						</uni-td>
 						<uni-td align="center">{{item.remain_count}}</uni-td>
 						<uni-td align="center">
