@@ -7,8 +7,8 @@
       <uni-forms-item name="goods_desc" label="详细描述">
         <uni-easyinput placeholder="商品详细描述" v-model="formData.goods_desc" trim="both"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="goods_thumb" label="缩略图地址">
-        <uni-easyinput placeholder="商品缩略图，用于在列表或搜索结果中预览显示" v-model="formData.goods_thumb" trim="both"></uni-easyinput>
+      <uni-forms-item name="goods_thumb" label="商品图片">
+        <uni-file-picker file-mediatype="image" file-extname="jpg,png" return-type="object" v-model="formData.goods_thumb"></uni-file-picker>
       </uni-forms-item>
       <uni-forms-item name="remain_count" label="库存数量">
         <uni-easyinput placeholder="库存数量" type="number" v-model="formData.remain_count"></uni-easyinput>
@@ -50,7 +50,7 @@
       let formData = {
         "name": "",
         "goods_desc": "",
-        "goods_thumb": "",
+        "goods_thumb": null,
         "remain_count": null,
         "last_modify_date": null
       }

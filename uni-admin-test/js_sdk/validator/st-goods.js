@@ -23,14 +23,11 @@ const validator = {
   "goods_thumb": {
     "rules": [
       {
-        "format": "string"
-      },
-      {
-        "pattern": "^(http://|https://|/|./|@/)\\S"
+        "format": "file"
       }
     ],
-    "title": "缩略图地址",
-    "label": "缩略图地址"
+    "title": "商品图片",
+    "label": "商品图片"
   },
   "remain_count": {
     "rules": [

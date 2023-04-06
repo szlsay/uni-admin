@@ -24,11 +24,11 @@
 			"trim": "both"
 		},
 		"goods_thumb": {
-			"bsonType": "string",
+			"bsonType": "file",
+			"fileMediaType": "image",
+			"fileExtName": "jpg,png",
 			"description": "商品缩略图，用于在列表或搜索结果中预览显示",
-			"title": "缩略图地址",
-			"pattern": "^(http://|https://|/|./|@/)\\S",
-			"trim": "both"
+			"title": "商品图片"
 		},
 		"remain_count": {
 			"bsonType": "int",
