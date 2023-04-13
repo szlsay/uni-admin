@@ -11,6 +11,43 @@
 	"properties": {
 		"_id": {
 			"description": "ID，系统自动生成"
+		},
+		"create_time": {
+			"bsonType": "timestamp",
+			"description": "请输入创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"create_uid": {
+			"bsonType": "string",
+			"description": "请输入创建人id",
+			"forceDefaultValue": {
+				"$env": "uid"
+			}
+		},
+		"keyword": {
+			"bsonType": "string",
+			"description": "请输入关键词",
+			"title": "关键词"
+		},
+		"last_modify_time": {
+			"bsonType": "timestamp",
+			"description": "最后修改时间"
+		},
+		"last_modify_uid": {
+			"bsonType": "string",
+			"description": "修改人id"
+		},
+		"search_cnt": {
+			"bsonType": "int",
+			"description": "请输入搜索次数",
+			"title": "搜索次数"
+		},
+		"version": {
+			"bsonType": "int",
+			"description": "请输入版本号",
+			"title": "版本号"
 		}
 	}
 }
