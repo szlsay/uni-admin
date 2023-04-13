@@ -180,6 +180,21 @@
 			"style": {
 				"navigationBarTitleText": "列表"
 			}
+		}, {
+			"path": "pages/shop/navigation/add",
+			"style": {
+				"navigationBarTitleText": "新增"
+			}
+		}, {
+			"path": "pages/shop/navigation/edit",
+			"style": {
+				"navigationBarTitleText": "编辑"
+			}
+		}, {
+			"path": "pages/shop/navigation/list",
+			"style": {
+				"navigationBarTitleText": "列表"
+			}
 		}
 	],
 	"subPackages": [{
