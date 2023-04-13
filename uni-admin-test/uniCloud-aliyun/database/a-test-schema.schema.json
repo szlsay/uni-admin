@@ -1,0 +1,62 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": ["name", "birth_year", "tel", "email"],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "姓名",
+			"trim": "both",
+			"minLength": 2,
+			"maxLength": 17
+		},
+		"birth_year": {
+			"bsonType": "int",
+			"title": "出生年份",
+			"minimum": 1950,
+			"maximum": 2020
+		},
+		"tel": {
+			"bsonType": "string",
+			"title": "手机号码",
+			"pattern": "^\\+?[0-9-]{3,20}$",
+			"trim": "both"
+		},
+		"email": {
+			"bsonType": "string",
+			"title": "email",
+			"format": "email",
+			"trim": "both"
+		},
+		"address": {
+			"bsonType": "object",
+			"title": "地址",
+			"required": ["city"],
+			"properties": {
+				"city": {
+					"bsonType": "string",
+					"title": "城市"
+				},
+				"street": {
+					"bsonType": "string",
+					"title": "街道",
+					"trim": "both"
+				}
+			}
+		},
+		"intro":{
+			"bsonType": "string",
+			"title": "简介",
+			"trim": "both"
+		}
+	}
+}
