@@ -10,7 +10,63 @@
 	},
 	"properties": {
 		"_id": {
-			"description": "ID，系统自动生成"
+			"description": "ID系统自动生成"
+		},
+		"create_time": {
+			"bsonType": "timestamp",
+			"description": "请输入创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"create_uid": {
+			"bsonType": "string",
+			"description": "请输入创建人id",
+			"forceDefaultValue": {
+				"$env": "uid"
+			}
+		},
+		"img": {
+			"bsonType": "file",
+			"fileMediaType": "image",
+			"fileExtName": "jpg,png",
+			"description": "图片",
+			"title": "图片"
+		},
+		"is_delete": {
+			"bsonType": "bool",
+			"description": "请输入是否删除",
+			"title": "删除"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "请输入名称",
+			"title": "名称"
+		},
+		"remark": {
+			"bsonType": "string",
+			"description": "请输入备注",
+			"title": "备注"
+		},
+		"sort": {
+			"bsonType": "int",
+			"description": "请输入排序",
+			"title": "排序"
+		},
+		"state": {
+			"bsonType": "string",
+			"description": "请输入状态",
+			"title": "状态"
+		},
+		"type": {
+			"bsonType": "string",
+			"description": "请输入类型",
+			"title": "类型"
+		},
+		"url": {
+			"bsonType": "string",
+			"description": "请输入地址",
+			"title": "地址"
 		}
 	}
 }
