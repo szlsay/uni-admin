@@ -33,27 +33,27 @@
 		},
 		"is_delete": {
 			"bsonType": "bool",
-			"defaultValue": "请输入是否删除",
+			"description": "请输入是否删除",
 			"title": "删除"
 		},
 		"state": {
 			"bsonType": "string",
-			"defaultValue": "请输入状态",
+			"description": "请输入状态",
 			"title": "状态"
 		},
 		"type": {
 			"bsonType": "string",
-			"defaultValue": "请输入类型",
+			"description": "请输入类型",
 			"title": "类型"
 		},
 		"url": {
 			"bsonType": "string",
-			"defaultValue": "请输入地址",
+			"description": "请输入地址",
 			"title": "地址"
 		},
 		"version": {
 			"bsonType": "string",
-			"defaultValue": "请输入版本号",
+			"description": "请输入版本号",
 			"title": "版本号"
 		}
 	}
