@@ -1,23 +1,8 @@
 <template>
   <view class="uni-container">
     <uni-forms ref="form" :model="formData" validateTrigger="bind">
-      <uni-forms-item name="create_time" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.create_time"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="create_uid" label="">
-        <uni-easyinput placeholder="请输入创建人id" v-model="formData.create_uid"></uni-easyinput>
-      </uni-forms-item>
       <uni-forms-item name="keyword" label="关键词">
         <uni-easyinput placeholder="请输入关键词" v-model="formData.keyword"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="last_modify_time" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.last_modify_time"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="last_modify_uid" label="">
-        <uni-easyinput placeholder="修改人id" v-model="formData.last_modify_uid"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="search_cnt" label="搜索次数">
-        <uni-easyinput placeholder="请输入搜索次数" type="number" v-model="formData.search_cnt"></uni-easyinput>
       </uni-forms-item>
       <view class="uni-button-group">
         <button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
@@ -46,17 +31,11 @@
     return result
   }
 
-  
-
   export default {
     data() {
       let formData = {
-        "create_time": null,
-        "create_uid": "",
         "keyword": "",
-        "last_modify_time": null,
-        "last_modify_uid": "",
-        "search_cnt": null
+        "search_cnt": 1
       }
       return {
         formData,
@@ -79,6 +58,7 @@
           mask: true
         })
         this.$refs.form.validate().then((res) => {
+					console.log('res-', res)
           return this.submitForm(res)
         }).catch(() => {
         }).finally(() => {
