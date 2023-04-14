@@ -36,8 +36,7 @@
 	export default {
 		data() {
 			let formData = {
-				"keyword": "",
-				"search_cnt": 1
+				"keyword": ""
 			}
 			return {
 				formData,
@@ -53,7 +52,7 @@
 		methods: {
 			submit() {
 				const shopSearch = uniCloud.importObject('st-shop-search')
-				shopSearch.add("b").then((res) => {
+				shopSearch.add(this.formData.keyword).then((res) => {
 					console.log('submit-', res)
 				}).catch((err) => {
 					console.log('submit-err-', err)
