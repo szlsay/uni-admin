@@ -102,6 +102,27 @@
 			 * 获取表单数据
 			 * @param {Object} id
 			 */
+			// async getDetail(id) {
+			// 	uni.showLoading({
+			// 		mask: true
+			// 	})
+			// 	const obj = uniCloud.importObject('lkplatform')
+			// 	const res = await obj.getMerchants(id, "company")
+
+			// 	if (res.errCode === 0) {
+			// 		// this.formData = res.data
+			// 	} else {
+			// 		uni.showModal({
+			// 			content: res.errMsg,
+			// 			showCancel: false
+			// 		})
+			// 	}
+			// 	uni.hideLoading()
+			// },
+			/**
+			 * 获取表单数据
+			 * @param {Object} id
+			 */
 			getDetail(id) {
 				uni.showLoading({
 					mask: true
@@ -110,6 +131,7 @@
 					const data = res.result.data[0]
 					if (data) {
 						this.formData = data
+			
 					}
 				}).catch((err) => {
 					uni.showModal({

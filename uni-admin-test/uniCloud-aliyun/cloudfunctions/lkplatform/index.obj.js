@@ -23,11 +23,6 @@ module.exports = {
 			}
 		}
 	},
-	getMerchants: async function(id, value) {
-		const dbCollectionName = 'lk-platform-merchants';
-		const result = await db.collection(dbCollectionName).doc(id).field(value).get();
-		return result
-	},
 	editMerchants: async function(id, value) {
 		const dbCollectionName = 'lk-platform-merchants';
 		const result = await db.collection(dbCollectionName).doc(id).update(value)
@@ -35,6 +30,24 @@ module.exports = {
 			return {
 				errCode: 0,
 				errMsg: '修改成功'
+			}
+		} else {
+			return {
+				errCode: -1,
+				errMsg: '请求服务失败'
+			}
+		}
+	},
+	
+	getMerchants: async function(id, value) {
+		const dbCollectionName = 'lk-platform-merchants';
+		const result = await db.collection(dbCollectionName).doc(id).field(value).get()
+		if (result && result.result && result.result.data && result.result.data.length === 1) {
+			const data = result.result.data[0]
+			return {
+				errCode: 0,
+				errMsg: '获取成功',
+				data: data
 			}
 		} else {
 			return {
