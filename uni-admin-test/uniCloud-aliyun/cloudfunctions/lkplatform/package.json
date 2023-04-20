@@ -1,0 +1,7 @@
+{
+  "name": "lkplatform",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
