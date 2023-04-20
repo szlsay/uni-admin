@@ -8,7 +8,6 @@ module.exports = {
 	_before: function() { // 通用预处理器
 
 	},
-
 	addMerchants: async function(value) {
 		const dbCollectionName = 'lk-platform-merchants';
 		const result = await db.collection(dbCollectionName).add(value)
@@ -20,18 +19,28 @@ module.exports = {
 		} else {
 			return {
 				errCode: -1,
-				errMsg: '请求服务失败1'
+				errMsg: '请求服务失败'
 			}
 		}
 	},
-	getMerchants: async function(id, fieldValue) {
+	getMerchants: async function(id, value) {
 		const dbCollectionName = 'lk-platform-merchants';
-		const result = await db.collection(dbCollectionName).doc(id).field(fieldValue).get()
+		const result = await db.collection(dbCollectionName).doc(id).field(value).get();
 		return result
 	},
 	editMerchants: async function(id, value) {
 		const dbCollectionName = 'lk-platform-merchants';
 		const result = await db.collection(dbCollectionName).doc(id).update(value)
-		return result
+		if (result && Object.keys(result).length === 3) {
+			return {
+				errCode: 0,
+				errMsg: '修改成功'
+			}
+		} else {
+			return {
+				errCode: -1,
+				errMsg: '请求服务失败'
+			}
+		}
 	},
 }

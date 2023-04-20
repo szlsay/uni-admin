@@ -80,17 +80,15 @@
 			async submitForm(value) {
 				const obj = uniCloud.importObject('lkplatform')
 				const res = await obj.editMerchants(this.formDataId, value)
-				console.log('submitForm----', res, Object.keys(res))
-				// 使用 clientDB 提交数据
-				if (res && Object.keys(res).length === 3) {
+				if (res.errCode === 0) {
 					uni.showToast({
-						title: '修改成功'
+						title: res.errMsg
 					})
 					this.getOpenerEventChannel().emit('refreshData')
 					setTimeout(() => uni.navigateBack(), 500)
 				} else {
 					uni.showModal({
-						content: err.message || '请求服务失败',
+						content: res.errMsg,
 						showCancel: false
 					})
 				}
@@ -100,24 +98,27 @@
 			 * 获取表单数据
 			 * @param {Object} id
 			 */
-			async getDetail(id) {
+			/**
+			 * 获取表单数据
+			 * @param {Object} id
+			 */
+			getDetail(id) {
 				uni.showLoading({
 					mask: true
 				})
-				const obj = uniCloud.importObject('lkplatform')
-				const res = await obj.getMerchants(id, "company")
-				uni.hideLoading()
-				if (res && res.result) {
+				db.collection(dbCollectionName).doc(id).field("company").get().then((res) => {
 					const data = res.result.data[0]
 					if (data) {
 						this.formData = data
 					}
-				} else {
+				}).catch((err) => {
 					uni.showModal({
 						content: err.message || '请求服务失败',
 						showCancel: false
 					})
-				}
+				}).finally(() => {
+					uni.hideLoading()
+				})
 			}
 		}
 	}
