@@ -109,14 +109,14 @@
 			// 	const obj = uniCloud.importObject('lkplatform')
 			// 	const res = await obj.getMerchants(id, "company")
 
-			// 	if (res.errCode === 0) {
-			// 		// this.formData = res.data
-			// 	} else {
-			// 		uni.showModal({
-			// 			content: res.errMsg,
-			// 			showCancel: false
-			// 		})
-			// 	}
+			// 	// if (res.errCode === 0) {
+			// 	// 	this.formData = res.data
+			// 	// } else {
+			// 	// 	uni.showModal({
+			// 	// 		content: res.errMsg,
+			// 	// 		showCancel: false
+			// 	// 	})
+			// 	// }
 			// 	uni.hideLoading()
 			// },
 			/**
