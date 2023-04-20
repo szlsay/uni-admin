@@ -70,15 +70,15 @@
 				const obj = uniCloud.importObject('lkplatform')
 				const res = await obj.addMerchants(value)
 				console.log('submitForm----', res)
-				if (res && res.id) {
+				if (res.errCode === 0) {
 					uni.showToast({
-						title: '新增成功'
+						title: res.errMsg
 					})
 					this.getOpenerEventChannel().emit('refreshData')
 					setTimeout(() => uni.navigateBack(), 500)
 				} else {
 					uni.showModal({
-						content: err.message || '请求服务失败',
+						content: res.errMsg,
 						showCancel: false
 					})
 				}

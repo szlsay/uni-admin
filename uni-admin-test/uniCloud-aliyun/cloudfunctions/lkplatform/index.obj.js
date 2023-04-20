@@ -12,12 +12,22 @@ module.exports = {
 	addMerchants: async function(value) {
 		const dbCollectionName = 'lk-platform-merchants';
 		const result = await db.collection(dbCollectionName).add(value)
-		return result
+		if (result && result.id) {
+			return {
+				errCode: 0,
+				errMsg: '新增成功'
+			}
+		} else {
+			return {
+				errCode: -1,
+				errMsg: '请求服务失败1'
+			}
+		}
 	},
 	getMerchants: async function(id, fieldValue) {
 		const dbCollectionName = 'lk-platform-merchants';
 		const result = await db.collection(dbCollectionName).doc(id).field(fieldValue).get()
-		return result		
+		return result
 	},
 	editMerchants: async function(id, value) {
 		const dbCollectionName = 'lk-platform-merchants';
