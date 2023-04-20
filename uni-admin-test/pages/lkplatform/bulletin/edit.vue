@@ -1,20 +1,17 @@
 <template>
   <view class="uni-container">
     <uni-forms ref="form" :model="formData" validateTrigger="bind">
-      <uni-forms-item name="title" label="">
-        <uni-easyinput placeholder="公告标题" v-model="formData.title"></uni-easyinput>
+      <uni-forms-item name="title" label="公告标题">
+        <uni-easyinput placeholder="请输入公告标题" v-model="formData.title"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="content" label="">
-        <uni-easyinput placeholder="公告内容" v-model="formData.content"></uni-easyinput>
+      <uni-forms-item name="content" label="公告内容">
+        <uni-easyinput placeholder="请输入公告内容" v-model="formData.content"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="start_date" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.start_date"></uni-datetime-picker>
+      <uni-forms-item name="start_date" label="开始时间">
+        <uni-datetime-picker return-type="timestamp" v-model="formData.start_date" placeholder="请选择开始时间"></uni-datetime-picker>
       </uni-forms-item>
-      <uni-forms-item name="end_date" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.end_date"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="create_date" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.create_date"></uni-datetime-picker>
+      <uni-forms-item name="end_date" label="结束时间">
+        <uni-datetime-picker return-type="timestamp" v-model="formData.end_date" placeholder="请选择结束时间"></uni-datetime-picker>
       </uni-forms-item>
       <view class="uni-button-group">
         <button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
