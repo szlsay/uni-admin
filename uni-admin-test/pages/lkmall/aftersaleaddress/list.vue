@@ -23,8 +23,6 @@
           <uni-tr>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'contact_name')" sortable @sort-change="sortChange($event, 'contact_name')">联系人姓名</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'contact_tel')" sortable @sort-change="sortChange($event, 'contact_tel')">联系电话</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'province_code')" sortable @sort-change="sortChange($event, 'province_code')">省</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'city_code')" sortable @sort-change="sortChange($event, 'city_code')">市</uni-th>
             <uni-th align="center">省市区</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'zip_code')" sortable @sort-change="sortChange($event, 'zip_code')">邮编</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'address')" sortable @sort-change="sortChange($event, 'address')">详细住址</uni-th>
@@ -33,8 +31,6 @@
           <uni-tr v-for="(item,index) in data" :key="index">
             <uni-td align="center">{{item.contact_name}}</uni-td>
             <uni-td align="center">{{item.contact_tel}}</uni-td>
-            <uni-td align="center">{{item.province_code}}</uni-td>
-            <uni-td align="center">{{item.city_code}}</uni-td>
             <uni-td align="center">{{item.area_code && item.area_code[0] && item.area_code[0].text}}</uni-td>
             <uni-td align="center">{{item.zip_code}}</uni-td>
             <uni-td align="center">{{item.address}}</uni-td>
@@ -73,7 +69,7 @@
   export default {
     data() {
       return {
-        collectionList: [ db.collection('lk-mall-aftersaleaddress').field('contact_name,contact_tel,province_code,city_code,area_code,zip_code,address').getTemp(),db.collection('opendb-city-china').field('code, name as text, eq(type, 2) as isleaf').getTemp() ],
+        collectionList: [ db.collection('lk-mall-aftersaleaddress').field('contact_name,contact_tel,area_code,zip_code,address').getTemp(),db.collection('opendb-city-china').field('code, name as text, eq(type, 2) as isleaf').getTemp() ],
         query: '',
         where: '',
         orderby: dbOrderBy,
@@ -95,8 +91,6 @@
           "fields": {
             "联系人姓名": "contact_name",
             "联系电话": "contact_tel",
-            "省": "province_code",
-            "市": "city_code",
             "省市区": "area_code",
             "邮编": "zip_code",
             "详细住址": "address"

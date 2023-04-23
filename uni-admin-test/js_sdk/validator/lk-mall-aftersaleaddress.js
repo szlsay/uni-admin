@@ -5,6 +5,9 @@ const validator = {
   "contact_name": {
     "rules": [
       {
+        "required": true
+      },
+      {
         "format": "string"
       },
       {
@@ -17,35 +20,23 @@ const validator = {
   "contact_tel": {
     "rules": [
       {
+        "required": true
+      },
+      {
         "format": "string"
       },
       {
-        "pattern": "^\\+?[0-9-]{3,20}$"
+        "pattern": "^1[34578][0-9]{9}$"
       }
     ],
     "title": "联系电话",
     "label": "联系电话"
   },
-  "province_code": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "省",
-    "label": "省"
-  },
-  "city_code": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "市",
-    "label": "市"
-  },
   "area_code": {
     "rules": [
+      {
+        "required": true
+      },
       {
         "format": "string"
       }
@@ -64,6 +55,9 @@ const validator = {
   },
   "address": {
     "rules": [
+      {
+        "required": true
+      },
       {
         "format": "string"
       }

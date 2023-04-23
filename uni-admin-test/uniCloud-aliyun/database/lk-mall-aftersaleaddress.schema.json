@@ -1,7 +1,7 @@
 // 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
 {
 	"bsonType": "object",
-	"required": [],
+	"required": ["contact_name", "contact_tel", "area_code", "address"],
 	"permission": {
 		"read": false,
 		"create": false,
@@ -23,18 +23,8 @@
 			"bsonType": "string",
 			"description": "请填写联系电话",
 			"title": "联系电话",
-			"pattern": "^\\+?[0-9-]{3,20}$",
+			"pattern": "^1[34578][0-9]{9}$",
 			"trim": "both"
-		},
-		"province_code": {
-			"bsonType": "string",
-			"description": "省级编码",
-			"title": "省"
-		},
-		"city_code": {
-			"bsonType": "string",
-			"description": "地级编码",
-			"title": "市"
 		},
 		"area_code": {
 			"bsonType": "string",
