@@ -1,0 +1,65 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"contact_name": {
+			"bsonType": "string",
+			"description": "请填写联系人姓名",
+			"title": "联系人姓名",
+			"maxLength": 10,
+			"trim": "both"
+		},
+		"contact_tel": {
+			"bsonType": "string",
+			"description": "请填写联系电话",
+			"title": "联系电话",
+			"pattern": "^\\+?[0-9-]{3,20}$",
+			"trim": "both"
+		},
+		"province_code": {
+			"bsonType": "string",
+			"description": "省级编码",
+			"title": "省"
+		},
+		"city_code": {
+			"bsonType": "string",
+			"description": "地级编码",
+			"title": "市"
+		},
+		"area_code": {
+			"bsonType": "string",
+			"description": "区级编码",
+			"title": "省市区",
+			"foreignKey": "opendb-city-china.code",
+			"enumType": "tree",
+			"enum": {
+				"collection": "opendb-city-china",
+				"orderby": "value asc",
+				"field": "code as value, name as text, eq(type, 2) as isleaf"
+			}
+		},
+		"zip_code": {
+			"bsonType": "string",
+			"description": "邮编",
+			"title": "邮编",
+			"trim": "both"
+		},
+		"address": {
+			"bsonType": "string",
+			"description": "省市区后面的详细住址，包含街道小区房间号",
+			"title": "详细住址",
+			"trim": "both"
+		}
+
+	}
+}
