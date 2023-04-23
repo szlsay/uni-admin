@@ -1,0 +1,22 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"gender": {
+			"bsonType": "array",
+			"title": "性别",
+			"description": "用户性别：0 未知 1 男性 2 女性",
+			"enum": [0, 1, 2]
+		}
+	}
+}

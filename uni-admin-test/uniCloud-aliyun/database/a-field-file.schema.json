@@ -1,0 +1,30 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"image": {
+			"bsonType": "file",
+			"fileMediaType": "image",
+			"fileExtName": "jpg,png",
+			"description": "请选择图片",
+			"title": "图片"
+		},
+		"video": {
+			"bsonType": "file",
+			"fileMediaType": "video",
+			"fileExtName": "mp4",
+			"description": "请选择视频",
+			"title": "视频"
+		}
+	}
+}
