@@ -40,6 +40,44 @@
 			"description": "请填写链接",
 			"title": "链接",
 			"format": "url"
+		},
+		"device_type": {
+			"bsonType": "int",
+			"title": "设备类型",
+			"defaultValue": 0,
+			"enum": [{
+					"text": "未知",
+					"value": 0
+				},
+				{
+					"text": "ios",
+					"value": 1
+				},
+				{
+					"text": "android",
+					"value": 2
+				},
+				{
+					"text": "app",
+					"value": 3
+				},
+				{
+					"text": "windows",
+					"value": 4
+				},
+				{
+					"text": "mac",
+					"value": 5
+				},
+				{
+					"text": "linux",
+					"value": 6
+				},
+				{
+					"text": "pc",
+					"value": 7
+				}
+			]
 		}
 	}
 }

@@ -13,10 +13,60 @@
 			"description": "ID，系统自动生成"
 		},
 		"gender": {
-			"bsonType": "array",
+			"bsonType": "int",
 			"title": "性别",
-			"description": "用户性别：0 未知 1 男性 2 女性",
-			"enum": [0, 1, 2]
+			"defaultValue": 0,
+			"enum": [{
+					"text": "未知",
+					"value": 0
+				},
+				{
+					"text": "男",
+					"value": 1
+				},
+				{
+					"text": "女",
+					"value": 2
+				}
+			]
+		},
+		"device_type": {
+			"bsonType": "int",
+			"title": "设备类型",
+			"defaultValue": 0,
+			"enum": [{
+					"text": "未知",
+					"value": 0
+				},
+				{
+					"text": "ios",
+					"value": 1
+				},
+				{
+					"text": "android",
+					"value": 2
+				},
+				{
+					"text": "app",
+					"value": 3
+				},
+				{
+					"text": "windows",
+					"value": 4
+				},
+				{
+					"text": "mac",
+					"value": 5
+				},
+				{
+					"text": "linux",
+					"value": 6
+				},
+				{
+					"text": "pc",
+					"value": 7
+				}
+			]
 		}
 	}
 }
