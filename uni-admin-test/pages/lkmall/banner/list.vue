@@ -22,7 +22,7 @@
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
             <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'update_time')" sortable @sort-change="sortChange($event, 'update_time')">更新时间</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'image')">图片</uni-th>
+            <uni-th align="center">图片</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'url')" sortable @sort-change="sortChange($event, 'url')">链接</uni-th>
             <uni-th align="center" filter-type="select" :filter-data="options.filterData.device_type_localdata" @filter-change="filterChange($event, 'device_type')">设备类型</uni-th>
             <uni-th align="center">操作</uni-th>
@@ -31,10 +31,14 @@
             <uni-td align="center">
               <uni-dateformat :threshold="[0, 0]" :date="item.update_time"></uni-dateformat>
             </uni-td>
-            <uni-td align="center">
+<!--            <uni-td align="center">
               <uni-file-picker v-if="item.image && item.image.fileType == 'image'" :value="item.image" :file-mediatype="item.image && item.image.fileType" return-type="object" :imageStyles="imageStyles" readonly></uni-file-picker>
               <uni-link v-else :href="item.image && item.image.url" :text="item.image && item.image.url"></uni-link>
-            </uni-td>
+            </uni-td> -->
+						<uni-td align="center">
+							<image v-if="item.image && item.image.fileType == 'image'"
+								style="width: 160px; height: 70px;" :src="item.image.path"></image>
+						</uni-td>
             <uni-td align="center">
               <uni-link :href="item.url" :download="item.url" :text="item.url"></uni-link>
             </uni-td>

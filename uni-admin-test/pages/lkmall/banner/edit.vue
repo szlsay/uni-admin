@@ -2,10 +2,10 @@
   <view class="uni-container">
     <uni-forms ref="form" :model="formData" validateTrigger="bind">
       <uni-forms-item name="update_time" label="更新时间">
-        <uni-dateformat return-type="timestamp" v-model="formData.update_time"></uni-dateformat>
+				<uni-datetime-picker return-type="timestamp" v-model="formData.update_time" placeholder="请选择更新时间"></uni-datetime-picker>
       </uni-forms-item>
       <uni-forms-item name="image" label="图片">
-        <uni-file-picker file-mediatype="image" file-extname="jpg,png" return-type="object" v-model="formData.image"></uni-file-picker>
+        <uni-file-picker file-mediatype="image" file-extname="jpg,png,webp" return-type="object" v-model="formData.image"></uni-file-picker>
       </uni-forms-item>
       <uni-forms-item name="url" label="链接">
         <uni-easyinput placeholder="请填写链接" v-model="formData.url"></uni-easyinput>
