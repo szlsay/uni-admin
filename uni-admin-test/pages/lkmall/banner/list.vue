@@ -31,10 +31,6 @@
             <uni-td align="center">
               <uni-dateformat :threshold="[0, 0]" :date="item.update_time"></uni-dateformat>
             </uni-td>
-<!--            <uni-td align="center">
-              <uni-file-picker v-if="item.image && item.image.fileType == 'image'" :value="item.image" :file-mediatype="item.image && item.image.fileType" return-type="object" :imageStyles="imageStyles" readonly></uni-file-picker>
-              <uni-link v-else :href="item.image && item.image.url" :text="item.image && item.image.url"></uni-link>
-            </uni-td> -->
 						<uni-td align="center">
 							<image v-if="item.image && item.image.fileType == 'image'"
 								style="width: 160px; height: 70px;" :src="item.image.path"></image>
