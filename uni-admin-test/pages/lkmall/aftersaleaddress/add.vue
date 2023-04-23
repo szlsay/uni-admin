@@ -5,10 +5,10 @@
         <uni-easyinput placeholder="请填写联系人姓名" v-model="formData.contact_name" trim="both"></uni-easyinput>
       </uni-forms-item>
       <uni-forms-item name="contact_tel" label="联系电话" required>
-        <uni-easyinput placeholder="请填写联系电话" v-model="formData.contact_tel" trim="both"></uni-easyinput>
+        <uni-easyinput placeholder="请填写联系电话" v-model="formData.contact_tel" trim="both" maxlength="11"></uni-easyinput>
       </uni-forms-item>
       <uni-forms-item name="area_code" label="省市区" required>
-        <uni-data-picker self-field="code" parent-field="parent_code" v-model="formData.area_code" collection="opendb-city-china" orderby="value asc" field="code as value, name as text, eq(type, 2) as isleaf"></uni-data-picker>
+        <uni-data-picker self-field="code" parent-field="parent_code" v-model="formData.area_code" collection="opendb-city-china" orderby="value asc" field="code as value, name as text, eq(type, 2) as isleaf" @change="onChange"></uni-data-picker>
       </uni-forms-item>
       <uni-forms-item name="zip_code" label="邮编">
         <uni-easyinput placeholder="邮编" v-model="formData.zip_code" trim="both"></uni-easyinput>
@@ -46,9 +46,14 @@
   export default {
     data() {
       let formData = {
+				"province_code": "",
+				"city_code": "",
+				"area_code": "",
+				"province_name": "",
+				"city_name": "",
+				"area_name": "",
         "contact_name": "",
         "contact_tel": "",
-        "area_code": "",
         "zip_code": "",
         "address": ""
       }
@@ -64,6 +69,17 @@
       this.$refs.form.setRules(this.rules)
     },
     methods: {
+			onChange(e) {
+				console.log(e)
+				if (e.detail && e.detail.value && e.detail.value.length === 3) {
+					 const value = e.detail.value
+					 this.formData.province_name = value[0].text
+					 this.formData.province_code = value[0].value
+					 this.formData.city_name = value[1].text
+					 this.formData.city_code = value[1].value
+					 this.formData.area_name = value[2].text
+				}
+			},
       
       /**
        * 验证表单并提交
@@ -84,6 +100,11 @@
        * 提交表单
        */
       submitForm(value) {
+				value.province_name = this.formData.province_name
+				value.province_code = this.formData.province_code
+				value.city_name = this.formData.city_name
+				value.city_code = this.formData.city_code
+				value.area_name = this.formData.area_name
         // 使用 clientDB 提交数据
         return db.collection(dbCollectionName).add(value).then((res) => {
           uni.showToast({

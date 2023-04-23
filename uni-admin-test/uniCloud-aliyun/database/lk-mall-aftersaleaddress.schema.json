@@ -26,6 +26,16 @@
 			"pattern": "^1[34578][0-9]{9}$",
 			"trim": "both"
 		},
+		"province_code": {
+			"bsonType": "string",
+			"description": "省级编码",
+			"title": "省"
+		},
+		"city_code": {
+			"bsonType": "string",
+			"description": "地级编码",
+			"title": "市"
+		},
 		"area_code": {
 			"bsonType": "string",
 			"description": "区级编码",
@@ -37,6 +47,21 @@
 				"orderby": "value asc",
 				"field": "code as value, name as text, eq(type, 2) as isleaf"
 			}
+		},
+		"province_name": {
+			"bsonType": "string",
+			"description": "省级名称",
+			"title": "省"
+		},
+		"city_name": {
+			"bsonType": "string",
+			"description": "地级名称",
+			"title": "市"
+		},
+		"area_name": {
+			"bsonType": "string",
+			"description": "区级名称",
+			"title": "区"
 		},
 		"zip_code": {
 			"bsonType": "string",
