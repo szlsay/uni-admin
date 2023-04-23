@@ -23,10 +23,7 @@
 		"update_time": {
 			"bsonType": "timestamp",
 			"description": "请选择更新时间",
-			"title": "更新时间",
-			"componentForEdit": {
-				"name": "uni-dateformat"
-			}
+			"title": "更新时间"
 		}
 	}
 }
