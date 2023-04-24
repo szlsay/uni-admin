@@ -9,8 +9,7 @@
 					:localdata="formOptions.protocol_type_localdata"></uni-data-checkbox>
 			</uni-forms-item>
 			<uni-forms-item name="content" label="内容" required>
-				<!-- <uni-easyinput placeholder="请填写内容" v-model="formData.content" trim="both"></uni-easyinput> -->
-				<view id="div1">
+				<view id="wangeditor">
 				</view>
 			</uni-forms-item>
 			<view class="uni-button-group">
@@ -89,11 +88,10 @@
 			 * 初始化富文本编辑器
 			 */
 			initEditor() {
-				editor = new E('#div1')
+				editor = new E('#wangeditor')
 				editor.config.zIndex = 0
 				// 取消自动 focus
 				editor.config.focus = false
-				editor.config.placeholder = '请填写内容'
 				editor.config.onblur = function(newHtml) {
 					console.log('onblur', newHtml) // 获取最新的 html 内容
 				}
@@ -109,8 +107,9 @@
 				// 配置触发 onchange 的时间频率，默认为 200ms
 				editor.config.onchangeTimeout = 500; // 修改为 500ms
 
-
 				// 本地上传图片
+				editor.config.uploadImgMaxSize = 1 * 1024 * 1024 // 2M
+				editor.config.uploadImgAccept = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp']
 				editor.config.customUploadImg = function(resultFiles, insertImgFn) {
 					// resultFiles 是 input 中选中的文件列表
 					// insertImgFn 是获取图片 url 后，插入到编辑器的方法

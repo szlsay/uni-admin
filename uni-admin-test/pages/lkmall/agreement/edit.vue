@@ -9,7 +9,7 @@
 					:localdata="formOptions.protocol_type_localdata"></uni-data-checkbox>
 			</uni-forms-item>
 			<uni-forms-item name="content" label="内容" required>
-				<div id="div1">
+				<div id="wangeditor">
 				</div>
 			</uni-forms-item>
 			<view class="uni-button-group">
@@ -92,7 +92,7 @@
 			 * 初始化富文本编辑器
 			 */
 			initEditor() {
-				editor = new E('#div1')
+				editor = new E('#wangeditor')
 				editor.config.zIndex = 0
 				// 取消自动 focus
 				editor.config.focus = false
