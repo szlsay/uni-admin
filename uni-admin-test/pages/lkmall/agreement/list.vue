@@ -16,14 +16,13 @@
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="update_time,title,content,protocol_type" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="update_time,title,protocol_type" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
             <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'update_time')" sortable @sort-change="sortChange($event, 'update_time')">更新时间</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'title')" sortable @sort-change="sortChange($event, 'title')">标题</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'content')" sortable @sort-change="sortChange($event, 'content')">内容</uni-th>
             <uni-th align="center" filter-type="select" :filter-data="options.filterData.protocol_type_localdata" @filter-change="filterChange($event, 'protocol_type')">协议类型</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
@@ -32,7 +31,6 @@
               <uni-dateformat :threshold="[0, 0]" :date="item.update_time"></uni-dateformat>
             </uni-td>
             <uni-td align="center">{{item.title}}</uni-td>
-            <uni-td align="center">{{item.content}}</uni-td>
             <uni-td align="center">{{options.protocol_type_valuetotext[item.protocol_type]}}</uni-td>
             <uni-td align="center">
               <view class="uni-group">
@@ -110,7 +108,6 @@
           "fields": {
             "更新时间": "update_time",
             "标题": "title",
-            "内容": "content",
             "协议类型": "protocol_type"
           }
         },

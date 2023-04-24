@@ -9,7 +9,9 @@
 					:localdata="formOptions.protocol_type_localdata"></uni-data-checkbox>
 			</uni-forms-item>
 			<uni-forms-item name="content" label="内容" required>
-				<uni-easyinput placeholder="请填写内容" v-model="formData.content" trim="both"></uni-easyinput>
+				<!-- <uni-easyinput placeholder="请填写内容" v-model="formData.content" trim="both"></uni-easyinput> -->
+				<view id="div1">
+				</view>
 			</uni-forms-item>
 			<view class="uni-button-group">
 				<button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
@@ -26,10 +28,11 @@
 		validator
 	} from '@/js_sdk/validator/lk-mall-agreement.js';
 
+	import E from 'wangeditor'
 	const db = uniCloud.database();
 	const dbCmd = db.command;
 	const dbCollectionName = 'lk-mall-agreement';
-
+  let editor = null
 	function getValidator(fields) {
 		let result = {}
 		for (let key in validator) {
@@ -78,9 +81,34 @@
 		},
 		onReady() {
 			this.$refs.form.setRules(this.rules)
+			this.initEditor()
 		},
 		methods: {
-
+			/**
+			 * 初始化富文本编辑器
+			 */
+			initEditor() {
+				editor = new E('#div1')
+				editor.config.zIndex = 0
+				// 取消自动 focus
+				editor.config.focus = false
+				editor.config.placeholder = '请填写内容'
+				editor.config.onblur = function (newHtml) {
+				    console.log('onblur', newHtml) // 获取最新的 html 内容
+				}
+				editor.config.onfocus = function (newHtml) {
+				    console.log('onfocus', newHtml) // 获取最新的 html 内容
+				}
+				// 配置 onchange 回调函数
+				const that = this
+				editor.config.onchange = function (newHtml) {
+				  console.log("change 之后最新的 html", newHtml);
+					that.formData.content = newHtml
+				};
+				// 配置触发 onchange 的时间频率，默认为 200ms
+				editor.config.onchangeTimeout = 500; // 修改为 500ms
+				editor.create()
+			},
 			/**
 			 * 验证表单并提交
 			 */
