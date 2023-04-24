@@ -285,6 +285,21 @@
 			"style": {
 				"navigationBarTitleText": "列表"
 			}
+		}, {
+			"path": "pages/lkmall/agreement/add",
+			"style": {
+				"navigationBarTitleText": "新增"
+			}
+		}, {
+			"path": "pages/lkmall/agreement/edit",
+			"style": {
+				"navigationBarTitleText": "编辑"
+			}
+		}, {
+			"path": "pages/lkmall/agreement/list",
+			"style": {
+				"navigationBarTitleText": "列表"
+			}
 		}
 	],
 	"subPackages": [{
