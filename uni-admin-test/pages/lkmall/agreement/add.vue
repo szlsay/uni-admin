@@ -32,7 +32,8 @@
 	const db = uniCloud.database();
 	const dbCmd = db.command;
 	const dbCollectionName = 'lk-mall-agreement';
-  let editor = null
+	let editor = null
+
 	function getValidator(fields) {
 		let result = {}
 		for (let key in validator) {
@@ -93,20 +94,38 @@
 				// 取消自动 focus
 				editor.config.focus = false
 				editor.config.placeholder = '请填写内容'
-				editor.config.onblur = function (newHtml) {
-				    console.log('onblur', newHtml) // 获取最新的 html 内容
+				editor.config.onblur = function(newHtml) {
+					console.log('onblur', newHtml) // 获取最新的 html 内容
 				}
-				editor.config.onfocus = function (newHtml) {
-				    console.log('onfocus', newHtml) // 获取最新的 html 内容
+				editor.config.onfocus = function(newHtml) {
+					console.log('onfocus', newHtml) // 获取最新的 html 内容
 				}
 				// 配置 onchange 回调函数
 				const that = this
-				editor.config.onchange = function (newHtml) {
-				  console.log("change 之后最新的 html", newHtml);
+				editor.config.onchange = function(newHtml) {
+					console.log("change 之后最新的 html", newHtml);
 					that.formData.content = newHtml
 				};
 				// 配置触发 onchange 的时间频率，默认为 200ms
 				editor.config.onchangeTimeout = 500; // 修改为 500ms
+
+
+				// 本地上传图片
+				editor.config.customUploadImg = function(resultFiles, insertImgFn) {
+					// resultFiles 是 input 中选中的文件列表
+					// insertImgFn 是获取图片 url 后，插入到编辑器的方法
+					resultFiles.forEach(async file => {
+						let filePath = URL.createObjectURL(file)
+						let cloudPath = file.name
+						const result = await uniCloud.uploadFile({
+							filePath,
+							cloudPath
+						});
+						// 上传图片，返回结果，将图片插入到编辑器中
+						insertImgFn(result.fileID)
+					})
+				}
+
 				editor.create()
 			},
 			/**

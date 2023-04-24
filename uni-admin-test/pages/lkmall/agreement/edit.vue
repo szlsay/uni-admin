@@ -109,6 +109,23 @@
 					console.log("change 之后最新的 html", newHtml);
 					that.formData.content = newHtml
 				};
+				// 本地上传图片
+				editor.config.uploadImgMaxSize = 1 * 1024 * 1024 // 2M
+				editor.config.uploadImgAccept = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp']
+				editor.config.customUploadImg = function(resultFiles, insertImgFn) {
+					// resultFiles 是 input 中选中的文件列表
+					// insertImgFn 是获取图片 url 后，插入到编辑器的方法
+					resultFiles.forEach(async file => {
+						let filePath = URL.createObjectURL(file)
+						let cloudPath = file.name
+						const result = await uniCloud.uploadFile({
+							filePath,
+							cloudPath
+						});
+						// 上传图片，返回结果，将图片插入到编辑器中
+						insertImgFn(result.fileID)
+					})
+				}
 				// 配置触发 onchange 的时间频率，默认为 200ms
 				editor.config.onchangeTimeout = 500; // 修改为 500ms
 				editor.create()
